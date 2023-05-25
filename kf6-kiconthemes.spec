@@ -1,6 +1,6 @@
 %define libname %mklibname KF6IconThemes
 %define devname %mklibname KF6IconThemes -d
-%define git 20230513
+%define git 20230525
 
 Name: kf6-kiconthemes
 Version: 5.240.0
