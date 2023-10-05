@@ -2,7 +2,7 @@
 %define devname %mklibname KF6IconThemes -d
 %define widgetslibname %mklibname KF6IconWidgets
 %define widgetsdevname %mklibname KF6IconWidgets -d
-%define git 20230927
+%define git 20231005
 
 Name: kf6-kiconthemes
 Version: 5.240.0
@@ -107,7 +107,6 @@ Icon GUI utilities
 %files -n %{devname}
 %{_includedir}/KF6/KIconThemes
 %{_libdir}/cmake/KF6IconThemes
-%{_qtdir}/mkspecs/modules/qt_KIconThemes.pri
 %{_qtdir}/doc/KF6IconThemes.*
 
 %files -n %{libname}
@@ -120,7 +119,6 @@ Icon GUI utilities
 
 %files -n %{widgetsdevname}
 %{_includedir}/KF6/KIconWidgets
-%{_qtdir}/mkspecs/modules/qt_KIconWidgets.pri
 %{_qtdir}/doc/KF6IconWidgets.*
 
 %files -n %{libname}-designer
