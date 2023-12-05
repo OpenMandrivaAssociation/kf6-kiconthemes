@@ -3,12 +3,11 @@
 %define libname %mklibname KF6IconThemes
 %define devname %mklibname KF6IconThemes -d
 %define widgetslibname %mklibname KF6IconWidgets
-%define widgetsdevname %mklibname KF6IconWidgets -d
 #define git 20231103
 
 Name: kf6-kiconthemes
 Version: 5.246.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kiconthemes/-/archive/master/kiconthemes-master.tar.bz2#/kiconthemes-%{git}.tar.bz2
 %else
@@ -43,7 +42,7 @@ BuildRequires: plasma6-xdg-desktop-portal-kde
 Requires: %{libname} = %{EVRD}
 
 %description
-Icon GUI utilities
+Icon GUI utilities.
 
 %package -n %{libname}
 Summary: Icon GUI utilities
@@ -51,7 +50,7 @@ Group: System/Libraries
 Requires: %{name} = %{EVRD}
 
 %description -n %{libname}
-Icon GUI utilities
+Icon GUI utilities.
 
 %package -n %{widgetslibname}
 Summary: Icon Widgets library
@@ -59,7 +58,7 @@ Group: System/Libraries
 Requires: %{name} = %{EVRD}
 
 %description -n %{widgetslibname}
-Icon Widgets library
+Icon Widgets library.
 
 %package -n %{libname}-designer
 Summary: Qt Designer support for %{name} widgets
@@ -68,27 +67,18 @@ Requires: %{libname} = %{EVRD}
 Supplements: qt6-qttools-designer
 
 %description -n %{libname}-designer
-Qt Designer support for %{name} widgets
+Qt Designer support for %{name} widgets.
 
 %package -n %{devname}
 Summary: Development files for %{name}
 Group: Development/C
 Requires: %{libname} = %{EVRD}
+%rename %{mklibname KF6IconWidgets -d}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
 
-Icon GUI utilities
-
-%package -n %{widgetsdevname}
-Summary: Development files for KIconWidgets
-Group: Development/C
-Requires: %{libname} = %{EVRD}
-
-%description -n %{widgetsdevname}
-Development files (Headers etc.) for KIconWidgets
-
-Icon GUI utilities
+Icon GUI utilities.
 
 %prep
 %autosetup -p1 -n kiconthemes-%{?git:master}%{!?git:%{version}}
@@ -114,6 +104,8 @@ Icon GUI utilities
 %{_includedir}/KF6/KIconThemes
 %{_libdir}/cmake/KF6IconThemes
 %{_qtdir}/doc/KF6IconThemes.*
+%{_includedir}/KF6/KIconWidgets
+%{_qtdir}/doc/KF6IconWidgets.*
 
 %files -n %{libname}
 %{_libdir}/libKF6IconThemes.so*
@@ -122,10 +114,6 @@ Icon GUI utilities
 
 %files -n %{widgetslibname}
 %{_libdir}/libKF6IconWidgets.so*
-
-%files -n %{widgetsdevname}
-%{_includedir}/KF6/KIconWidgets
-%{_qtdir}/doc/KF6IconWidgets.*
 
 %files -n %{libname}-designer
 %{_qtdir}/plugins/designer/kiconthemes6widgets.so
