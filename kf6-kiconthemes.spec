@@ -3,10 +3,10 @@
 %define libname %mklibname KF6IconThemes
 %define devname %mklibname KF6IconThemes -d
 %define widgetslibname %mklibname KF6IconWidgets
-%define git 20240217
+#define git 20240217
 
 Name: kf6-kiconthemes
-Version: 5.250.0
+Version: 6.0.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kiconthemes/-/archive/master/kiconthemes-master.tar.bz2#/kiconthemes-%{git}.tar.bz2
