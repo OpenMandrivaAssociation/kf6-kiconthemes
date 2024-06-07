@@ -41,6 +41,9 @@ BuildRequires: cmake(KF6ConfigWidgets)
 BuildRequires: cmake(KF6Archive)
 BuildRequires: cmake(KF6BreezeIcons)
 Requires: %{libname} = %{EVRD}
+BuildSystem: cmake
+BuildOption: -DBUILD_QCH:BOOL=ON
+BuildOption: -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 Icon GUI utilities.
@@ -81,22 +84,6 @@ Development files (Headers etc.) for %{name}.
 
 Icon GUI utilities.
 
-%prep
-%autosetup -p1 -n kiconthemes-%{?git:master}%{!?git:%{version}}
-%cmake \
-	-DBUILD_QCH:BOOL=ON \
-	-DBUILD_WITH_QT6:BOOL=ON \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-
-%find_lang %{name} --all-name --with-qt --with-html
-
 %files -f %{name}.lang
 %{_datadir}/qlogging-categories6/kiconthemes.*
 %{_bindir}/kiconfinder6
@@ -111,6 +98,7 @@ Icon GUI utilities.
 %files -n %{libname}
 %{_libdir}/libKF6IconThemes.so*
 %{_qtdir}/qml/org/kde/iconthemes
+%{_qtdir}/plugins/kiconthemes6/iconengines/KIconEnginePlugin.so
 
 %files -n %{widgetslibname}
 %{_libdir}/libKF6IconWidgets.so*
