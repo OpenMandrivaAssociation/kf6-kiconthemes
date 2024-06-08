@@ -40,6 +40,8 @@ BuildRequires: cmake(Qt6Quick)
 BuildRequires: cmake(KF6ConfigWidgets)
 BuildRequires: cmake(KF6Archive)
 BuildRequires: cmake(KF6BreezeIcons)
+# FIXME ^^^ is also provided by kf6-breeze-icons-devel
+BuildRequires: %mklibname -d KF6BreezeIcons
 Requires: %{libname} = %{EVRD}
 BuildSystem: cmake
 BuildOption: -DBUILD_QCH:BOOL=ON
