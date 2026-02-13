@@ -7,7 +7,7 @@
 #define git 20240217
 
 Name: kf6-kiconthemes
-Version: 6.22.0
+Version: 6.23.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kiconthemes/-/archive/master/kiconthemes-master.tar.bz2#/kiconthemes-%{git}.tar.bz2
